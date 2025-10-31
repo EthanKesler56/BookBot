@@ -28,14 +28,22 @@ def character_count(book_contents):
 def helper(items):
     return items["num"]
 
-def dict_sort(dictionary):
-    new_dict = sorted(dictionary.items())
-    final_dict = dict(new_dict)
-    return final_dict
+
+def dict_sort(char_dict):
+    new_list = []
+    for key,value in char_dict.items():     
+        new_dict = {"char":key, "num":value}
+        new_list.append(new_dict)
+        
+    new_list.sort(reverse=True,key=helper)
+
+    for item in new_list: 
+        if item["char"].isalpha(): 
+            print(f'{item["char"]}: {item["num"]}')
+
+    
 
 
-text = character_count('books/frankenstein.txt')
-print(dict_sort(text))
 
 
 
